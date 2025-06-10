@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [8, 8],
 	"textures": {
-		"1": "minecraft:item/piski/piski"
+		"1": "item/piski/piski"
 	},
 	"elements": [
 		{
@@ -69,8 +69,8 @@
 		},
 		"fixed": {
 			"rotation": [-90, 0, 0],
-			"translation": [-1.25, -0.5, -14],
-			"scale": [1.9, 1.9, 1.9]
+			"translation": [-1.25, -0.5, -24.25],
+			"scale": [3.01, 3.01, 3.01]
 		}
 	}
 }
