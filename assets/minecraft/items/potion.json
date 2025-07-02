@@ -35,6 +35,15 @@
           "type": "minecraft:model",
           "model": "minecraft:item/tea/cup_greentea"
         }
+      },
+      {
+      	"when": [
+      		"белочка"
+      	],
+      	"model": {
+      	  "type": "minecraft:model",
+      	  "model": "minecraft:item/belka_vodka/belka_vodka"
+      	}
       }
     ],
     "fallback": {
