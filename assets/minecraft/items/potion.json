@@ -39,11 +39,24 @@
       {
       	"when": [
       		"белочка",
-          "Белочка"
+      		"Белочка",
+      		"водка белочка"
       	],
       	"model": {
       	  "type": "minecraft:model",
       	  "model": "minecraft:item/belka_vodka/belka_vodka"
+      	}
+      },
+      {
+      	"when": [
+      		"yagodamaster",
+      		"Yagodamaster",
+      		"Ягодамастер",
+      		"ягодамастер"
+      	],
+      	"model": {
+      		"type": "minecraft:model",
+      		"model": "minecraft:item/yagodamaster/yagodamaster"
       	}
       }
     ],
