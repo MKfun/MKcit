@@ -75,6 +75,17 @@
           "type": "minecraft:model",
           "model": "minecraft:item/pocof3/pocof3"
         }
+      },
+      {
+      	"when": [
+      		"sweet",
+      		"Sweet",
+      		"rn10p"
+      	],
+      	"model": {
+      		"type": "minecraft:model",
+      		"model": "minecraft:item/rn10p/rn10p"
+      	}
       }
     ],
     "fallback": {

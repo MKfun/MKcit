@@ -1,0 +1,25 @@
+{
+    "model": {
+      "type": "minecraft:select",
+      "property": "minecraft:component",
+      "component": "minecraft:custom_name",
+      "cases": [
+        {
+          "when": [
+            "Kitchen sink",
+            "kitchen sink",
+            "Кухонная раковина",
+            "кухонная раковина"
+          ],
+          "model": {
+            "type": "minecraft:model",
+            "model": "minecraft:item/kitchen_sink/kitchen_sink"
+          }
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "minecraft:block/stone"
+      }
+    }
+  }
