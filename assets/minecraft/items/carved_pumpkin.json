@@ -4,15 +4,18 @@
       "property": "minecraft:component",
       "component": "minecraft:custom_name",
       "cases": [
-        {
-          "when": [
-            "Quest 3S"
-          ],
+          {
+          "when": ["Quest 3S"],
           "model": {
             "type": "minecraft:model",
             "model": "minecraft:item/quest3s/quest3s"
-          }
-        }
+          }},
+		  {
+          "when": ["некограм", "Некограм", "nekogram", "Nekogram", "nekocap"],
+			"model": {
+			  "type": "minecraft:model",
+			  "model": "minecraft:item/nekocap/nekocap"
+				  }}
       ],
       "fallback": {
         "type": "minecraft:model",

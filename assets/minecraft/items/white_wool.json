@@ -210,6 +210,13 @@
 				"model": "minecraft:item/playerplush/gentuwu/playerplush"
 			  }
 			}
+		  },
+		  {
+			"when": ["некограм", "Некограм", "nekogram", "Nekogram", "nekocap"],
+			"model": {
+			  "type": "minecraft:model",
+			  "model": "minecraft:item/nekocap/nekocap"
+				  }
 		  }
 		],
 		"fallback": {
