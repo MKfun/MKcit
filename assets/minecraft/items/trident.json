@@ -1,0 +1,22 @@
+{
+    "model": {
+      "type": "minecraft:select",
+      "property": "minecraft:component",
+      "component": "minecraft:custom_name",
+      "cases": [
+        {
+          "when": [
+            "pngdodster"
+          ],
+          "model": {
+            "type": "minecraft:model",
+            "model": "minecraft:item/pngdodster/pngdodster"
+          }
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "minecraft:item/trident"
+      }
+    }
+  }
