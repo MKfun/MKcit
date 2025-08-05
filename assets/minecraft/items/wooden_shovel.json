@@ -82,10 +82,10 @@
       		"Sweet",
       		"rn10p"
       	],
-      	"model": [
+      	"model": {
       		"type": "minecraft:model",
       		"model": "minecraft:item/rn10p/rn10p"
-      	]
+      	}
       }
     ],
     "fallback": {
