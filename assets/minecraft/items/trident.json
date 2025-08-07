@@ -1,6 +1,7 @@
 {
   "model": {
     "type": "minecraft:select",
+    "property": "minecraft:component",
     "component": "minecraft:custom_name",
     "cases": [
       {
@@ -14,23 +15,39 @@
       }
     ],
     "fallback": {
-      "type": "minecraft:condition",
-      "on_false": {
-        "type": "minecraft:special",
-        "base": "minecraft:item/trident_in_hand",
-        "model": {
-          "type": "minecraft:trident"
+      "type": "minecraft:select",
+      "property": "minecraft:display_context",
+      "cases": [
+        {
+          "when": [
+            "gui",
+            "ground",
+            "fixed"
+          ],
+          "model": {
+            "type": "minecraft:model",
+            "model": "minecraft:item/trident"
+          }
         }
-      },
-      "on_true": {
-        "type": "minecraft:special",
-        "base": "minecraft:item/trident_throwing",
-        "model": {
-          "type": "minecraft:trident"
+      ],
+      "fallback": {
+        "type": "minecraft:condition",
+        "property": "minecraft:using_item",
+        "on_true": {
+          "type": "minecraft:special",
+          "model": {
+            "type": "minecraft:trident"
+          },
+          "base": "minecraft:item/trident_throwing"
+        },
+        "on_false": {
+          "type": "minecraft:special",
+          "model": {
+            "type": "minecraft:trident"
+          },
+          "base": "minecraft:item/trident_in_hand"
         }
-      },
-      "property": "minecraft:using_item"
-    },
-    "property": "minecraft:component"
+      }
+    }
   }
 }
