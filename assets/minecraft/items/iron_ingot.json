@@ -64,7 +64,19 @@
             "model": "minecraft:item/thinkpad/thinkpad"
           }
         }
-      }
+      },
+      {
+          "when": [
+            "Модем",
+            "модем",
+            "Modem",
+            "modem"
+          ],
+          "model": {
+            "type": "minecraft:model",
+            "model": "minecraft:item/modem/modem"
+          }
+        }
     ],
     "fallback": {
       "type": "minecraft:model",
