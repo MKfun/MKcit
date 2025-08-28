@@ -17,6 +17,19 @@
         }
       },
       {
+      	"when": [
+      		"Pooziqo",
+      		"pooziqo",
+      		"Пузико",
+      		"пузико",
+      		"orb"
+      	],
+      	"model": {
+      		"type": "minecraft:model",
+      		"model": "minecraft:item/pooziqo/pooziqo"
+      	}
+      },
+      {
         "when": [
           "эсс9",
           "s9",
