@@ -16,6 +16,46 @@
             "type": "minecraft:model",
             "model": "minecraft:item/pooziqo/pooziqo"
           }
+        },
+        {
+        	"when": [
+        		"Capoo",
+        		"capoo",
+        		"Capoo cat",
+        		"capoo cat",
+        		"Кошкожук",
+        		"кошкожук"
+        	],
+        	"model": {
+        		"type": "minecraft:model",
+        		"model": "minecraft:item/capoocat/capoo"
+        	}
+        },
+        {
+        	"when": [
+        		"Bee",
+        		"bee",
+        		"Пчёла",
+        		"пчёла",
+        		"Пчела",
+        		"пчела",
+        		"Бджол",
+        		"бджол"
+        	],
+        	"model": {
+        		"type": "minecraft:model",
+        		"model": "minecraft:item/bee/bee"
+        	}
+        },
+        {
+        	"when": [
+        		"Beemiho",
+        		"beemiho"
+        	],
+        	"model": {
+        		"type": "minecraft:model",
+        		"model": "minecraft:item/beemiho/bee"
+        	}
         }
       ],
       "fallback": {
