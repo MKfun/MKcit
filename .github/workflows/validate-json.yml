@@ -1,11 +1,14 @@
-name: Validate JSON and Approve PR
+name: Validate JSON and Review PR
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+permissions:
+  pull-requests: write 
+
 jobs:
-  validate-json:
+  validate-and-review:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -20,15 +23,33 @@ jobs:
 
       - name: Run JSON Syntax Check
         if: steps.changed-files-json.outputs.any_changed == 'true'
+        id: json-check
         uses: limit-zero/json-syntax-check@v2
         with:
           pattern: ${{ steps.changed-files-json.outputs.all_changed_files }}
-          
-  auto-approve:
-    needs: validate-json
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    steps:
-      - name: Auto-approve pull request
-        uses: hmarr/auto-approve-action@v4
+        continue-on-error: true 
+
+      - name: Request changes on failure
+        if: steps.json-check.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'REQUEST_CHANGES',
+              body: '❌ **Ошибка в синтаксисе JSON!** \n\nПожалуйста, откройте вкладку "Checks" и посмотрите лог шага `Run JSON Syntax Check`, чтобы увидеть, в каком файле и строке находится ошибка.'
+            })
+
+      - name: Approve on success
+        if: steps.json-check.outcome == 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'APPROVE'
+            })
