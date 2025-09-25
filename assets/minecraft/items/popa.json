@@ -1,2 +1,116 @@
-a11
-ыыы ошибко
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "minecraft:custom_name",
+    "cases": [
+      {
+        "when": [
+          "Красное баскетбольное кольцо",
+          "красное баскетбольное кольцо"
+        ],
+        "model": {
+          "type": "minecraft:model",
+          "model": "minecraft:item/basketballhoop/basketballhoop_red"
+        }
+      },
+      {
+        "when": [
+          "Синее баскетбольное кольцо",
+          "синее баскетбольное кольцо"
+        ],
+        "model": {
+          "type": "minecraft:model",
+          "model": "minecraft:item/basketballhoop/basketballhoop_blue"
+        }
+      },
+      {
+        "when": [
+          "Server",
+          "server",
+          "сервер",
+          "Сервер"
+        ],
+        "model": {
+          "type": "minecraft:model",
+          "model": "minecraft:item/server/server"
+        }
+      },
+      {
+        "when": [
+          "djdeck",
+          "Djdeck",
+          "диджейский пульт",
+          "Диджейский пульт",
+          "DJ Remote",
+          "dj remote",
+          "DJ remote"
+        ],
+        "model": {
+          "type": "minecraft:model",
+          "model": "minecraft:item/djdeck/djdeck"
+        }
+      },
+      {
+        "when": [
+          "djmixer",
+          "Djmixer",
+          "диджейский миксер",
+          "Диджейский миксер",
+          "DJ Mixer",
+          "DJ mixer",
+          "dj mixer"
+        ],
+        "model": {
+          "type": "minecraft:model",
+          "model": "minecraft:item/djmixer/djmixer"
+        }
+      },
+      {
+        "when": [
+          "ThinkPad",
+          "Thinkpad",
+          "thinkpad",
+          "Тинькпад",
+          "тинькпад"
+        ],
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "firstperson_lefthand",
+                "thirdperson_lefthand"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "minecraft:item/thinkpad/closed_thinkpad"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "minecraft:item/thinkpad/thinkpad"
+          }
+        }
+      },
+      {
+          "when": [
+            "Модем",
+            "модем",
+            "Modem",
+            "modem"
+          ],
+          "model": {
+            "type": "minecraft:model",
+            "model": "minecraft:item/modem/modem"
+          }
+        }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/iron_ingot"
+    }
+  }
+}
