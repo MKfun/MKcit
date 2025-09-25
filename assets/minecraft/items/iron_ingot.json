@@ -64,7 +64,7 @@
         "model": {
           "type": "minecraft:model",
           "model": "minecraft:item/djmixer/djmixer"
-        }
+        
       },
       {
         "when": [
