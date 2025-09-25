@@ -1,7 +1,8 @@
 name: Validate JSON and Review PR
 
+# ЗАПУСКАЕМ WORKFLOW С РАСШИРЕННЫМИ ПРАВАМИ
 on:
-  pull_request:
+  pull_request_target: # <--- ГЛАВНОЕ ИЗМЕНЕНИЕ
     types: [opened, synchronize, reopened]
 
 permissions:
@@ -11,10 +12,13 @@ jobs:
   validate-and-review:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      # Шаг 1: Скачиваем код именно из Pull Request'а, а не из основной ветки
+      - name: Checkout PR code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
-      # Шаг 1: Находим все измененные .json файлы в Pull Request
+      # Шаг 2: Находим все измененные .json файлы
       - name: Get changed JSON files
         id: changed-files-json
         uses: tj-actions/changed-files@v44
@@ -22,31 +26,31 @@ jobs:
           files: |
             **.json
 
-      # Шаг 2: Запускаем проверку синтаксиса, используя правильный экшен
+      # Шаг 3: Запускаем проверку синтаксиса
       - name: Run JSON Syntax Check
         if: steps.changed-files-json.outputs.any_changed == 'true'
         id: json-check
-        uses: limitusus/json-syntax-check@v2 # <--- ВОТ ПРАВИЛЬНЫЙ ЭКШЕН ИЗ ВАШЕГО ПРИМЕРА
+        uses: limitusus/json-syntax-check@v2
         with:
-          # Передаем ему только измененные файлы
           pattern: ${{ steps.changed-files-json.outputs.all_changed_files }}
-        continue-on-error: true # Продолжаем, даже если есть ошибка, чтобы оставить комментарий
+        continue-on-error: true
 
-      # Шаг 3: Запрашиваем изменения, если проверка провалилась
+      # Шаг 4: Запрашиваем изменения, если проверка провалилась
       - name: Request changes on failure
         if: steps.json-check.outcome == 'failure'
         uses: actions/github-script@v7
         with:
+          # Теперь мы берем номер PR из другого места в контексте
           script: |
             github.rest.pulls.createReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: context.issue.number,
+              pull_number: ${{ github.event.pull_request.number }},
               event: 'REQUEST_CHANGES',
               body: '❌ **Ошибка в синтаксисе JSON!** \n\nПожалуйста, откройте вкладку "Checks" и посмотрите лог шага `Run JSON Syntax Check`, чтобы увидеть, в каком файле и строке находится ошибка.'
             })
 
-      # Шаг 4: Одобряем, если проверка прошла успешно
+      # Шаг 5: Одобряем, если проверка прошла успешно
       - name: Approve on success
         if: steps.json-check.outcome == 'success'
         uses: actions/github-script@v7
@@ -55,7 +59,7 @@ jobs:
             github.rest.pulls.createReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: context.issue.number,
+              pull_number: ${{ github.event.pull_request.number }},
               event: 'APPROVE',
               body: '✅ **Проверка синтаксиса JSON пройдена успешно!**'
             })
