@@ -1,0 +1,34 @@
+name: Validate JSON and Approve PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get changed JSON files
+        id: changed-files-json
+        uses: tj-actions/changed-files@v44
+        with:
+          files: |
+            **.json
+
+      - name: Run JSON Syntax Check
+        if: steps.changed-files-json.outputs.any_changed == 'true'
+        uses: limit-zero/json-syntax-check@v2
+        with:
+          pattern: ${{ steps.changed-files-json.outputs.all_changed_files }}
+          
+  auto-approve:
+    needs: validate-json
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Auto-approve pull request
+        uses: hmarr/auto-approve-action@v4
