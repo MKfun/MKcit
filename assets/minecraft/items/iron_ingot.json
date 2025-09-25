@@ -39,8 +39,12 @@
       {
         "when": [
           "djdeck",
+          "Djdeck",
+          "диджейский пульт",
           "Диджейский пульт",
-          "DJ Remote"
+          "DJ Remote",
+          "dj remote",
+          "DJ remote"
         ],
         "model": {
           "type": "minecraft:model",
@@ -50,8 +54,12 @@
       {
         "when": [
           "djmixer",
+          "Djmixer",
+          "диджейский миксер",
           "Диджейский миксер",
-          "DJ Mixer"
+          "DJ Mixer",
+          "DJ mixer",
+          "dj mixer"
         ],
         "model": {
           "type": "minecraft:model",
