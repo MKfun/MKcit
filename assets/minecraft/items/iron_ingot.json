@@ -38,6 +38,28 @@
       },
       {
         "when": [
+          "djdeck",
+          "Диджейский пульт",
+          "DJ Remote"
+        ],
+        "model": {
+          "type": "minecraft:model",
+          "model": "minecraft:item/djdeck/djdeck"
+        }
+      },
+      {
+        "when": [
+          "djmixer",
+          "Диджейский миксер",
+          "DJ Mixer"
+        ],
+        "model": {
+          "type": "minecraft:model",
+          "model": "minecraft:item/djmixer/djmixer"
+        }
+      },
+      {
+        "when": [
           "ThinkPad",
           "Thinkpad",
           "thinkpad",
