@@ -14,6 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Шаг 1: Находим все измененные .json файлы в Pull Request
       - name: Get changed JSON files
         id: changed-files-json
         uses: tj-actions/changed-files@v44
@@ -21,16 +22,19 @@ jobs:
           files: |
             **.json
 
-      - name: Run JSON Lint check
+      # Шаг 2: Запускаем проверку синтаксиса, используя правильный экшен
+      - name: Run JSON Syntax Check
         if: steps.changed-files-json.outputs.any_changed == 'true'
-        id: json-lint
-        uses: tj-actions/json-lint@v2
+        id: json-check
+        uses: limitusus/json-syntax-check@v2 # <--- ВОТ ПРАВИЛЬНЫЙ ЭКШЕН ИЗ ВАШЕГО ПРИМЕРА
         with:
-          json_files: ${{ steps.changed-files-json.outputs.all_changed_files }}
-        continue-on-error: true 
+          # Передаем ему только измененные файлы
+          pattern: ${{ steps.changed-files-json.outputs.all_changed_files }}
+        continue-on-error: true # Продолжаем, даже если есть ошибка, чтобы оставить комментарий
 
+      # Шаг 3: Запрашиваем изменения, если проверка провалилась
       - name: Request changes on failure
-        if: steps.json-lint.outcome == 'failure'
+        if: steps.json-check.outcome == 'failure'
         uses: actions/github-script@v7
         with:
           script: |
@@ -39,11 +43,12 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.issue.number,
               event: 'REQUEST_CHANGES',
-              body: '❌ **Ошибка в синтаксисе JSON!** \n\nПожалуйста, откройте вкладку "Checks" и посмотрите лог шага `Run JSON Lint check`, чтобы увидеть, в каком файле и строке находится ошибка.'
+              body: '❌ **Ошибка в синтаксисе JSON!** \n\nПожалуйста, откройте вкладку "Checks" и посмотрите лог шага `Run JSON Syntax Check`, чтобы увидеть, в каком файле и строке находится ошибка.'
             })
 
+      # Шаг 4: Одобряем, если проверка прошла успешно
       - name: Approve on success
-        if: steps.json-lint.outcome == 'success'
+        if: steps.json-check.outcome == 'success'
         uses: actions/github-script@v7
         with:
           script: |
@@ -51,5 +56,6 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.issue.number,
-              event: 'APPROVE'
+              event: 'APPROVE',
+              body: '✅ **Проверка синтаксиса JSON пройдена успешно!**'
             })
