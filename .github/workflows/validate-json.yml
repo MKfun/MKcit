@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, reopened]
 
 permissions:
-  pull-requests: write 
+  pull-requests: write
 
 jobs:
   validate-and-review:
@@ -21,16 +21,16 @@ jobs:
           files: |
             **.json
 
-      - name: Run JSON Syntax Check
+      - name: Run JSON Lint check
         if: steps.changed-files-json.outputs.any_changed == 'true'
-        id: json-check
-        uses: limit-zero/json-syntax-check@v2
+        id: json-lint
+        uses: tj-actions/json-lint@v2
         with:
-          pattern: ${{ steps.changed-files-json.outputs.all_changed_files }}
+          json_files: ${{ steps.changed-files-json.outputs.all_changed_files }}
         continue-on-error: true 
 
       - name: Request changes on failure
-        if: steps.json-check.outcome == 'failure'
+        if: steps.json-lint.outcome == 'failure'
         uses: actions/github-script@v7
         with:
           script: |
@@ -39,11 +39,11 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.issue.number,
               event: 'REQUEST_CHANGES',
-              body: '❌ **Ошибка в синтаксисе JSON!** \n\nПожалуйста, откройте вкладку "Checks" и посмотрите лог шага `Run JSON Syntax Check`, чтобы увидеть, в каком файле и строке находится ошибка.'
+              body: '❌ **Ошибка в синтаксисе JSON!** \n\nПожалуйста, откройте вкладку "Checks" и посмотрите лог шага `Run JSON Lint check`, чтобы увидеть, в каком файле и строке находится ошибка.'
             })
 
       - name: Approve on success
-        if: steps.json-check.outcome == 'success'
+        if: steps.json-lint.outcome == 'success'
         uses: actions/github-script@v7
         with:
           script: |
