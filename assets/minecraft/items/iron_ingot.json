@@ -36,7 +36,7 @@
           "model": "minecraft:item/server/server"
         }
       },
-            {
+      {
         "when": [
           "djdeck",
           "Диджейский пульт",
@@ -45,6 +45,17 @@
         "model": {
           "type": "minecraft:model",
           "model": "minecraft:item/djdeck/djdeck"
+        }
+      },
+      {
+        "when": [
+          "djmixer",
+          "Диджейский миксер",
+          "DJ Mixer"
+        ],
+        "model": {
+          "type": "minecraft:model",
+          "model": "minecraft:item/djmixer/djmixer"
         }
       },
       {
