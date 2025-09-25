@@ -36,6 +36,17 @@
           "model": "minecraft:item/server/server"
         }
       },
+            {
+        "when": [
+          "djdeck",
+          "Диджейский пульт",
+          "DJ Remote"
+        ],
+        "model": {
+          "type": "minecraft:model",
+          "model": "minecraft:item/djdeck/djdeck"
+        }
+      },
       {
         "when": [
           "ThinkPad",
