@@ -1,0 +1,60 @@
+name: Validate JSON and Review PR
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  validate-and-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Get changed JSON files
+        id: changed-files-json
+        uses: tj-actions/changed-files@v44
+        with:
+          files: |
+            **.json
+
+      - name: Run JSON Syntax Check
+        if: steps.changed-files-json.outputs.any_changed == 'true'
+        id: json-check
+        uses: limitusus/json-syntax-check@v2
+        with:
+          pattern: ${{ steps.changed-files-json.outputs.all_changed_files }}
+        continue-on-error: true
+
+      - name: Request changes on failure
+        if: steps.json-check.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.ACTION_PAT }} # <--- ИСПОЛЬЗУЕМ СЕКРЕТ
+          script: |
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: ${{ github.event.pull_request.number }},
+              event: 'REQUEST_CHANGES',
+              body: '❌ **Ошибка в синтаксисе JSON!** \n\nПожалуйста, откройте вкладку "Checks" и посмотрите лог шага `Run JSON Syntax Check`, чтобы увидеть, в каком файле и строке находится ошибка.'
+            })
+
+      - name: Approve on success
+        if: steps.json-check.outcome == 'success'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.ACTION_PAT }} # <--- ИСПОЛЬЗУЕМ СЕКРЕТ
+          script: |
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: ${{ github.event.pull_request.number }},
+              event: 'APPROVE',
+              body: '✅ **Проверка синтаксиса JSON пройдена успешно!**'
+            })
