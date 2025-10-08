@@ -1,0 +1,27 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "minecraft:custom_name",
+    "cases": [
+        {
+            "when": [
+            "sahur",
+            "Sahur",
+            "bat",
+            "Bat",
+            "бита",
+            "Бита"
+        ],
+            "model": {
+                "type": "minecraft:model",
+                "model": "minecraft:item/bat/bat"
+            }
+        }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/mace"
+    }
+  }
+}
