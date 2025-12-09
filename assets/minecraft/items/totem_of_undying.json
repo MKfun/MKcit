@@ -255,6 +255,29 @@
         }
       },
       {
+        "when": "tiramisu",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "firstperson_lefthand",
+                "thirdperson_lefthand"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "minecraft:item/playerplush/tiramisu/playeronneck"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "minecraft:item/playerplush/tiramisu/playerplush"
+          }
+        }
+      },
+      {
         "when": "spbog",
         "model": {
           "type": "minecraft:select",
