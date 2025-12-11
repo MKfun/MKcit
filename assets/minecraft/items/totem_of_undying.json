@@ -278,7 +278,7 @@
         }
       },
       {
-        "when": "GentUwU",
+        "when": "spfuga",
         "model": {
           "type": "minecraft:select",
           "property": "minecraft:display_context",
@@ -290,13 +290,36 @@
               ],
               "model": {
                 "type": "minecraft:model",
-                "model": "minecraft:item/playerplush/gentuwu/playeronneck"
+                "model": "minecraft:item/playerplush/spfuga/playeronneck"
               }
             }
           ],
           "fallback": {
             "type": "minecraft:model",
-            "model": "minecraft:item/playerplush/gentuwu/playerplush"
+            "model": "minecraft:item/playerplush/spfuga/playerplush"
+          }
+        }
+      },
+      {
+        "when": "den4iklovelinux",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "firstperson_lefthand",
+                "thirdperson_lefthand"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "minecraft:item/playerplush/den4iklovelinux/playeronneck"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "minecraft:item/playerplush/den4iklovelinux/playerplush"
           }
         }
       }
