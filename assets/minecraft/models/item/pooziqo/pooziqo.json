@@ -134,7 +134,7 @@
 				"south": {"uv": [0, 0, 0.55, 1], "texture": "#0"},
 				"west": {"uv": [0, 0, 0.55, 1], "texture": "#0"},
 				"up": {"uv": [0, 0, 0.55, 1], "texture": "#0"},
-				"down": {"uv": [0, 0, 0.55, 1], "texture": "#missing"}
+				"down": {"uv": [0, 0, 0.55, 1], "texture": "#0"}
 			}
 		},
 		{
@@ -144,7 +144,7 @@
 			"faces": {
 				"north": {"uv": [0, 0, 0.55, 1], "texture": "#0"},
 				"east": {"uv": [3, 10.25, 5.5, 12.75], "rotation": 90, "texture": "#0"},
-				"south": {"uv": [0, 0, 0.55, 1], "texture": "#missing"},
+				"south": {"uv": [0, 0, 0.55, 1], "texture": "#0"},
 				"west": {"uv": [0, 0, 0.55, 1], "texture": "#0"},
 				"up": {"uv": [0, 0, 0.55, 1], "texture": "#0"},
 				"down": {"uv": [0, 0, 0.55, 1], "texture": "#0"}
@@ -157,10 +157,10 @@
 			"faces": {
 				"north": {"uv": [5.75, 10, 7.03, 12], "rotation": 180, "texture": "#0"},
 				"east": {"uv": [0, 11, 1, 10.5], "rotation": 270, "texture": "#0"},
-				"south": {"uv": [0, 0, 0.28, 1], "texture": "#missing"},
+				"south": {"uv": [0, 0, 0.28, 1], "texture": "#0"},
 				"west": {"uv": [5.75, 10, 7.03, 12], "rotation": 180, "texture": "#0"},
 				"up": {"uv": [1.5, 10, 2.28, 10.5], "rotation": 180, "texture": "#0"},
-				"down": {"uv": [0, 0, 0.28, 0.5], "texture": "#missing"}
+				"down": {"uv": [0, 0, 0.28, 0.5], "texture": "#0"}
 			}
 		},
 		{
@@ -170,7 +170,7 @@
 			"faces": {
 				"north": {"uv": [1.25, 11.5, 2.03, 12], "rotation": 180, "texture": "#0"},
 				"east": {"uv": [0, 11.75, 1, 11.25], "rotation": 270, "texture": "#0"},
-				"south": {"uv": [0, 0, 0.28, 0.5], "texture": "#missing"},
+				"south": {"uv": [0, 0, 0.28, 0.5], "texture": "#0"},
 				"west": {"uv": [1.25, 11.5, 2.03, 12], "rotation": 180, "texture": "#0"},
 				"up": {"uv": [1.25, 11.5, 2.03, 12], "rotation": 180, "texture": "#0"},
 				"down": {"uv": [1.25, 11.5, 2.03, 12], "rotation": 180, "texture": "#0"}
@@ -181,12 +181,12 @@
 			"to": [15.06, 8.5, 8.5],
 			"rotation": {"angle": 22.5, "axis": "x", "origin": [3, 0, 0]},
 			"faces": {
-				"north": {"uv": [0, 0, 0.28, 1], "rotation": 180, "texture": "#missing"},
+				"north": {"uv": [0, 0, 0.28, 1], "rotation": 180, "texture": "#0"},
 				"east": {"uv": [1, 11, 2, 10.5], "rotation": 270, "texture": "#0"},
 				"south": {"uv": [2.25, 9, 3.03, 10], "rotation": 180, "texture": "#0"},
 				"west": {"uv": [5.75, 10, 7.03, 12], "rotation": 180, "texture": "#0"},
 				"up": {"uv": [1.5, 10, 2.28, 10.5], "rotation": 180, "texture": "#0"},
-				"down": {"uv": [0, 0, 0.28, 0.5], "texture": "#missing"}
+				"down": {"uv": [0, 0, 0.28, 0.5], "texture": "#0"}
 			}
 		},
 		{
@@ -199,7 +199,7 @@
 				"south": {"uv": [11.5, 13.5, 12.35, 14], "rotation": 90, "texture": "#0"},
 				"west": {"uv": [11.5, 13.5, 12.35, 14], "rotation": 90, "texture": "#0"},
 				"up": {"uv": [11.5, 13.5, 12.35, 14], "rotation": 90, "texture": "#0"},
-				"down": {"uv": [0, 0, 0.25, 0.5], "rotation": 90, "texture": "#missing"}
+				"down": {"uv": [0, 0, 0.25, 0.5], "rotation": 90, "texture": "#0"}
 			}
 		},
 		{
@@ -210,7 +210,7 @@
 				"north": {"uv": [11.5, 13, 12.5, 14.1], "rotation": 90, "texture": "#0"},
 				"east": {"uv": [11.5, 13, 12.5, 14.1], "rotation": 90, "texture": "#0"},
 				"south": {"uv": [11.5, 13, 12.5, 14.1], "rotation": 90, "texture": "#0"},
-				"west": {"uv": [0, 0, 0.25, 0.5], "rotation": 180, "texture": "#missing"},
+				"west": {"uv": [0, 0, 0.25, 0.5], "rotation": 180, "texture": "#0"},
 				"up": {"uv": [11.5, 13, 12.5, 14.1], "rotation": 90, "texture": "#0"},
 				"down": {"uv": [11.5, 13, 12.5, 14.1], "rotation": 90, "texture": "#0"}
 			}
@@ -220,7 +220,7 @@
 			"to": [15.06, 7.5, 9],
 			"rotation": {"angle": 22.5, "axis": "x", "origin": [3, 0, 0]},
 			"faces": {
-				"north": {"uv": [0, 0, 0.28, 0.5], "rotation": 180, "texture": "#missing"},
+				"north": {"uv": [0, 0, 0.28, 0.5], "rotation": 180, "texture": "#0"},
 				"east": {"uv": [0, 11.75, 1, 11.25], "rotation": 270, "texture": "#0"},
 				"south": {"uv": [1.25, 11.5, 2.03, 12], "rotation": 180, "texture": "#0"},
 				"west": {"uv": [1.25, 11.5, 2.03, 12], "rotation": 180, "texture": "#0"},

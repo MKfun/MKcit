@@ -38,21 +38,6 @@
       },
       {
         "when": [
-          "djdeck",
-          "Djdeck",
-          "диджейский пульт",
-          "Диджейский пульт",
-          "DJ Remote",
-          "dj remote",
-          "DJ remote"
-        ],
-        "model": {
-          "type": "minecraft:model",
-          "model": "minecraft:item/djdeck/djdeck"
-        }
-      },
-      {
-        "when": [
           "djmixer",
           "Djmixer",
           "диджейский миксер",
